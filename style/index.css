@@ -1,0 +1,58 @@
+html,body {
+    height: 100%;
+    width: 100%;
+    /* background-color: rgb(45, 58, 75); */
+    overflow: hidden;
+    background: url("../images/login-bg.jpg");
+    background-repeat:no-repeat;
+    background-size: 100% 100%; 
+}
+.login-container .el-input {
+    width: 89%;
+    display: inline-block;
+    height: 40px;
+    background: rgba(0,0,0,0.1)
+}
+.login-container input{
+    color: #fff;
+    background: rgba(0,0,0,0.1);
+    border:none;
+}
+.title{
+    text-align: center;
+    color: #fff;
+}
+  .login-form {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    padding: 180px 35px 0;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .tips {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+   .tips span:first-of-type {
+        margin-right: 16px;
+      }
+  .svg-container {
+    padding: 0px 5px 0px 15px;
+    color:#fff;
+    vertical-align: middle;
+    width: 30px;
+    display: inline-block;
+  }
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    z-index: 2;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+  }

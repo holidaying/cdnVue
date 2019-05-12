@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录页</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./icons/iconfont.css">
+    <link rel="stylesheet" href="./style/common.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- element-ui -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- icons -->
+    <script src="./icons/iconfont.js"></script>
+    <script src="./js/common.js"></script>
+
+</head>
+
+<body>
+    <div id="app" class="login-container">
+        <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
+            label-position="left">
+            <div class="title-container">
+                <h3 class="title">报表管理系统</h3>
+            </div>
+            <el-form-item prop="username">
+                <span class="svg-container">
+                    <i class="iconfont icon-icon-test4"></i>
+                </span>
+                <el-input ref="username" v-model="loginForm.username" placeholder="Username" name="username" type="text"
+                    tabindex="1" auto-complete="on" />
+            </el-form-item>
+            <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+                <el-form-item prop="password">
+                    <span class="svg-container">
+                        <i class="iconfont icon-icon-test3"></i>
+                    </span>
+                    <span class="show-pwd" @click="showPwd">
+                        <i class="iconfont"
+                            :class="passwordType === 'password' ? 'icon-icon-test5' : 'icon-icon-test'"></i>
+                    </span>
+                    <el-input :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
+                        placeholder="Password" name="password" tabindex="2" auto-complete="on"
+                        @keyup.native="checkCapslock" @blur="capsTooltip = false" @keyup.enter.native="handleLogin" />
+
+                </el-form-item>
+            </el-tooltip>
+            <div style="margin-bottom: 15px;position: relative;">
+                <div  @click="refreshCode" style="position: absolute;left: 270px;cursor: pointer;">
+                        <profile-code ref="identifyCodes" :identify-code="identifyCode" ></profile-code>
+                </div>
+              
+                <span style="color:#fff">验证码</span>
+                <el-input v-model="vercode" placeholder="输入验证码" name="vercode" type="text"
+                    tabindex="1" auto-complete="on"  style="width: 200px"/>   
+            </div>
+            <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;"
+                @click.native.prevent="handleLogin">Login</el-button>
+        </el-form>
+         
+    </div>
+</body>
+<script src="components/identify.js"></script>
+<script src="js/index.js"></script>
+</html>
